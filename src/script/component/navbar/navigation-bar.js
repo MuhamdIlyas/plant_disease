@@ -14,6 +14,17 @@ class NavigationBar extends HTMLElement {
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <div class="dropdown">
+                        <button class="btn btn-succes dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            Pilih Tanaman
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="#">Jagung</a></li>
+                            <li><a class="dropdown-item" href="#">Padi</a></li>
+                            <li><a class="dropdown-item" href="#">Mentimun</a></li>
+                            <li><a class="dropdown-item" href="#">Tomat</a></li>
+                        </ul>
+                    </div>
                     <li class="nav-item">
                         <a class="nav-link" href="#klasifikasikan">Klasifikasikan</a>
                     </li>

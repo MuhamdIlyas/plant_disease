@@ -16,7 +16,7 @@ const data = [
 	},
 	{
 		title: 'Palette',
-		link: 'https://coolors.co/264653-2a9d8f-e76f51-ddd8b8-ffffff',
+		link: 'https://coolors.co/adeee3-18a566-03643b-2f9a12-423e28',
 		text: 'Generate from Coolors',
 	},
 	{
@@ -31,13 +31,13 @@ const data = [
 	},
 	{
 		title: 'Gambar 1',
-		link: '#tim-pengembang',
-		text: '12 Types of Trash by Tim Pengembang',
+		link: 'https://images.unsplash.com/photo-1421789665209-c9b2a435e3dc',
+		text: 'Conifer sapling by @Matthew Smith',
 	},
 	{
 		title: 'Gambar 2',
-		link: 'https://www.freepik.com/free-vector/programmer-working-flat-style_4911013.htm#page=1&query=developer&position=0&from_view=search',
-		text: 'Programmer working in flat style Free Vector Freepick by @pikisuperstar',
+		link: 'https://img.freepik.com/free-vector/hand-coding-concept-illustration_114360-8113.jpg?w=740&t=st=1672287894~exp=1672288494~hmac=db8e9a750d6a6432653dcf5344df2a5a496c26d4159bbe11dd6e5d36e6738f9e',
+		text: 'Free vector hand coding concept illustration by @storyset',
 	},
 	{
 		title: 'Hosting Platform',

@@ -18,15 +18,15 @@ class AuthorSection extends HTMLElement {
 
 	render() {
 		this.innerHTML = `
-        <section class="col-lg-4 col-md-12 col-xl-4 col-12 my-3">
-            <div class="card border-0 h-100 shadow">
+        <section class="col-lg-6 col-md-12 col-xl-4 col-12 my-3">
+            <div class="author card border-0 h-100 shadow">
                 <div class="card-body my-3 text-center">
                     <h3 class="card-title hr-title">
                         <i class="fas fa-user-friends"></i>
                         Tim Pengembang
                     </h3>
-                    <img src="https://image.freepik.com/free-vector/programmer-working-flat-style_52683-15041.jpg"
-                        class="card-img-bottom" alt="Programmer working in flat style">
+                    <img src="https://img.freepik.com/free-vector/hand-coding-concept-illustration_114360-8113.jpg"
+                        class="card-img-bottom" alt="Coding concept illustration">
                 </div>
             </div>
         </section>
@@ -34,12 +34,12 @@ class AuthorSection extends HTMLElement {
 		this.author.forEach((author) => {
 			const authorElement = document.createElement('author-dev');
 			authorElement.classList.add(
-				'col-lg-4',
+				'col-lg-6',
 				'col-md-6',
 				'col-xl-4',
 				'col-12',
-				'my-3'
-			);
+				'my-3',
+				);
 			authorElement.author = author;
 			this.appendChild(authorElement);
 		});
