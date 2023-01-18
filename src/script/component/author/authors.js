@@ -26,10 +26,6 @@ class AuthorDev extends HTMLElement {
                     <div class="card-top">
                         <h5 class="card-title text-center">${this._author.name}</h5>
                         <p class="card-text text-center">${this._author.bio}</p>
-                        <ul>
-                            <li>${this._author.group}</li>
-                            <li>${this._author.hobby}</li>
-                        </ul>
                     </div>
                     <hr>
                     <div class="row">

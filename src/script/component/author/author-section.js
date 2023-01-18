@@ -23,7 +23,7 @@ class AuthorSection extends HTMLElement {
                 <div class="card-body my-3 text-center">
                     <h3 class="card-title hr-title">
                         <i class="fas fa-user-friends"></i>
-                        Tim Pengembang
+                        Pengembang
                     </h3>
                     <img src="https://img.freepik.com/free-vector/hand-coding-concept-illustration_114360-8113.jpg"
                         class="card-img-bottom" alt="Coding concept illustration">

@@ -1,5 +1,5 @@
 {
-  "name": "garbage-classification",
+  "name": "plant-diseases",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,18 +9,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/virgiawankusuma/Garbage-Classification.git"
+    "url": "git+https://github.com/muhamadilyas17/plant_disease.git"
   },
   "keywords": [
-    "garbage",
-    "classification"
+    "plant",
+    "diseases"
   ],
-  "author": "Gusti Muhammad Aulia Nur Sulthan, Virgiawan Teguh Kusuma",
+  "author": "Muhamad Ilyas",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/virgiawankusuma/Garbage-Classification/issues"
+    "url": "https://github.com/muhamadilyas17/plant_disease/issues"
   },
-  "homepage": "https://github.com/virgiawankusuma/Garbage-Classification#readme",
+  "homepage": "https://github.com/muhamadilyas17/plant_disease#readme",
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.4",

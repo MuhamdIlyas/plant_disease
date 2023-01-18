@@ -1,4 +1,5 @@
 import './choose-img';
+import './choose-model';
 import './classify-img';
 
 class ClassifySection extends HTMLElement {
@@ -12,7 +13,11 @@ class ClassifySection extends HTMLElement {
                 <i class="fas fa-expand"></i>
                 Klasifikasikan
             </h3>
-        `;
+        `;  
+        const chooseModelElement = document.createElement('choose-model');
+        chooseModelElement.classList.add('mb-5');
+        this.appendChild(chooseModelElement);
+
         const chooseImgElement = document.createElement('choose-img');
         chooseImgElement.classList.add('col-lg-6', 'col-md-6', 'col-12', 'mb-5');
         this.appendChild(chooseImgElement);
@@ -21,6 +26,7 @@ class ClassifySection extends HTMLElement {
         classifyImgElement.classList.add('col-lg-6', 'col-md-6', 'col-12', 'mb-5');
         classifyImgElement.setAttribute('id', 'hasil-klasifikasi');
         this.appendChild(classifyImgElement);
+
     }
 }
 
