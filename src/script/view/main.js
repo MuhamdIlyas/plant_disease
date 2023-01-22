@@ -68,7 +68,8 @@ const main = () => {
 			classifiedIcon.classList.add('d-none');
 			classifiedName.classList.add('d-none');
 
-			// console.log(pilihModel.value);
+			imgClassified.src = imgClassify.src;
+
 			switch (pilihModel.value) {
 				case 'padi':
 					classifyPadi(imgClassify, btnPredict, spinnerGrow, classifiedIcon, classifiedName);
