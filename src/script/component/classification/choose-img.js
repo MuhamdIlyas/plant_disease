@@ -21,9 +21,9 @@ class ChooseImg extends HTMLElement {
                 <div id="btn-cancel"><i class="fas fa-times"></i></div>
                 <div class="file-name">Nama file</div>
             </div>
-            <input type="file" id="btn-default" accept="image/,.jpg,.jpeg,.png" hidden>
-            <button id="btn-upload" class="btn btn-secondary mt-2"><i class="fas fa-upload"></i> Pilih
-                gambar..</button>
+            <input type="file" id="btn-upload" accept="image/,.jpg,.jpeg,.png" hidden>
+            <label for="btn-upload" class="btn btn-secondary mt-2"><i class="fas fa-upload"></i> Pilih
+                gambar..</label>
         </div>
         `;
     }

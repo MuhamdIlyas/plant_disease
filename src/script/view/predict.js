@@ -1,62 +1,25 @@
 import * as tf from '@tensorflow/tfjs';
 
-
-let model;
-async function initJagung() {
-	console.log('model loading..');
-	model = await tf.loadGraphModel(
-		'https://raw.githubusercontent.com/muhamadilyas17/plant_disease/main/model/json/ModelJagung/modelJagung.json'
-	);
-	console.log('model loaded..');
-}
-
-let model1;
-async function initMentimun() {
-	console.log('model loading..');
-	model1 = await tf.loadGraphModel(
-		'https://raw.githubusercontent.com/muhamadilyas17/plant_disease/main/model/json/ModelMentimun/modelMentimun.json',
-	);
-	console.log('model loaded..');
-}
-
-let model2;
-async function initPadi() {
-	console.log('model loading..');
-	model2 = await tf.loadGraphModel(
-		'https://raw.githubusercontent.com/muhamadilyas17/plant_disease/main/model/json/ModelPadi/modelPadi.json',
-	);
-	console.log('model loaded..');
-}
-
-let model3;
-async function initTomat() {
-	console.log('model loading..');
-	model3 = await tf.loadGraphModel(
-		// 'https://raw.githubusercontent.com/muhamadilyas17/plant_disease/main/model/json/ModelTomat/modelTomat.json'
-	);
-	console.log('model loaded..');
-}
-
-const IMAGENET_CLASSES_JAGUNG = {
+const IMAGE_CLASSES_JAGUNG = {
 	0: 'Jagung (Cercospora leaf spot Gray leaf spot)',
 	1: 'Jagung (Common rust)',
 	2: 'Jagung (Bagus)',
 	3: 'Jagung (Northern Leaf Blight)'
 };
 
-const IMAGENET_CLASSES_MENTIMUN = {
+const IMAGE_CLASSES_MENTIMUN = {
 	0: 'Mentimun',
 	1: 'Mentimun (Bagus)'
 };
 
-const IMAGENET_CLASSES_PADI = {
+const IMAGE_CLASSES_PADI = {
 	0: 'Padi (BrownSpot)',
 	1: 'Padi (Bagus)',
 	2: 'Padi (Hispa)',
 	3: 'Padi (LeafBlast)'
 };
 
-const IMAGENET_CLASSES_TOMAT = {
+const IMAGE_CLASSES_TOMAT = {
 	0: 'Tomat (Bacterial spot)',
 	1: 'Tomat (Early blight)',
 	2: 'Tomat (Bagus)',
@@ -76,6 +39,13 @@ async function classifyJagung(
 	classifiedIcon,
 	classifiedName
 ) {
+
+	const model = await tf.loadGraphModel(
+		'https://raw.githubusercontent.com/muhamadilyas17/plant_disease/main/model/json/ModelJagung/modelJagung.json'
+	);
+
+	console.log(`model jagung load`);
+
 	setTimeout(() => {
 		spinnerGrow.classList.add('d-none');
 		btnPredict.disabled = false;
@@ -94,7 +64,7 @@ async function classifyJagung(
 		.map(function (p, i) {
 			return {
 				probability: p,
-				className: IMAGENET_CLASSES_JAGUNG[i],
+				className: IMAGE_CLASSES_JAGUNG[i],
 			};
 		})
 		.sort(function (a, b) {
@@ -107,9 +77,6 @@ async function classifyJagung(
 	let diseasesTypes;
 	switch (results[0].className) {
 		case 'Jagung (Common rust)':
-		// case 'Mentimun (Bagus)':
-		// case 'Padi (Hispa)':
-		// case 'Tomat (Leaf Mold)':
 			diseasesTypes = 'Sehat';
 			break;
 
@@ -135,6 +102,12 @@ async function classifyMentimun(
 		classifiedName.classList.remove('d-none');
 	}, 3000);
 
+	const model = await tf.loadGraphModel(
+		'https://raw.githubusercontent.com/muhamadilyas17/plant_disease/main/model/json/ModelMentimun/modelMentimun.json',
+	);
+
+	console.log(`model mentimun load`);
+
 	// action for the submit button
 	let tensorImg = tf.browser
 		.fromPixels(imgClassified)
@@ -146,7 +119,7 @@ async function classifyMentimun(
 		.map(function (p, i) {
 			return {
 				probability: p,
-				className: IMAGENET_CLASSES_MENTIMUN[i],
+				className: IMAGE_CLASSES_MENTIMUN[i],
 			};
 		})
 		.sort(function (a, b) {
@@ -187,6 +160,12 @@ async function classifyPadi(
 		classifiedName.classList.remove('d-none');
 	}, 3000);
 
+	const model = await tf.loadGraphModel(
+		'https://raw.githubusercontent.com/muhamadilyas17/plant_disease/main/model/json/ModelPadi/modelPadi.json',
+	);
+
+	console.log(`model padi load`);
+
 	// action for the submit button
 	let tensorImg = tf.browser
 		.fromPixels(imgClassified)
@@ -198,7 +177,7 @@ async function classifyPadi(
 		.map(function (p, i) {
 			return {
 				probability: p,
-				className: IMAGENET_CLASSES_PADI[i],
+				className: IMAGE_CLASSES_PADI[i],
 			};
 		})
 		.sort(function (a, b) {
@@ -239,6 +218,12 @@ async function classifyTomat(
 		classifiedName.classList.remove('d-none');
 	}, 3000);
 
+	const model = await tf.loadGraphModel(
+		'https://raw.githubusercontent.com/muhamadilyas17/plant_disease/main/model/json/ModelTomat/modelTomat.json'
+	);
+
+	console.log(`model tomat load`);
+
 	// action for the submit button
 	let tensorImg = tf.browser
 		.fromPixels(imgClassified)
@@ -250,7 +235,7 @@ async function classifyTomat(
 		.map(function (p, i) {
 			return {
 				probability: p,
-				className: IMAGENET_CLASSES_TOMAT[i],
+				className: IMAGE_CLASSES_TOMAT[i],
 			};
 		})
 		.sort(function (a, b) {
@@ -277,4 +262,4 @@ async function classifyTomat(
 	penyakit.innerText = `[${results[0].className}][${diseasesTypes}]`;
 }
 
-export { initJagung, initMentimun, initPadi, initTomat, classifyJagung, classifyMentimun, classifyPadi, classifyTomat };
+export { classifyJagung, classifyMentimun, classifyPadi, classifyTomat };

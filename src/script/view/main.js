@@ -4,24 +4,16 @@ import '../component/classification/classify-section.js';
 import '../component/author/author-section.js';
 import '../component/credits/credits-section.js';
 
-import {initPadi, initMentimun, classifyMentimun, classifyPadi, initTomat, classifyTomat, initJagung, classifyJagung } from './predict';
-
-document.addEventListener('DOMContentLoaded', init);
+import { classifyMentimun, classifyPadi,  classifyTomat, classifyJagung } from './predict';
 
 const main = () => {
 	const wrapper1 = document.querySelector('.wrapper-1');
 	const wrapper2 = document.querySelector('.wrapper-2');
-
-	// const pilihJagung = document.querySelector('#pilih-jagung');
-	// const pilihPadi = document.querySelector('#pilih-padi');
-	// const pilihMentimun = document.querySelector('#pilih-mentimun');
-	// const pilihTomat = document.querySelector('#pilih-tomat');
+	
 	const pilihModel = document.querySelector('#pilih-model');
-	let modelDipilih;
 
-	const btnDefault = document.querySelector('#btn-default');
-	const btnCancel = document.querySelector('#btn-cancel');
 	const btnUpload = document.querySelector('#btn-upload');
+	const btnCancel = document.querySelector('#btn-cancel');
 	const btnPredict = document.querySelector('#btn-predict');
 	const imgClassify = document.querySelector('#img-classify');
 	const imgClassified = document.querySelector('#img-classified');
@@ -32,40 +24,8 @@ const main = () => {
 
 	const regEx = /[0-9a-zA-Z\^\&\'\@\{\}\[\]\,\$\=\!\-\#\(\)\.\%\+\~\_ ]+$/;
 
-	console.log(pilihModel.value)
-	// 	if(pilihModel.value === 'jagung') {
-	// 		initJagung
-	// 		classifyJagung
-	// 	} else if(pilihModel.value === 'padi') {
-	// 		initPadi
-	// 		classifyPadi
-	// 	} else if(pilihModel.value === 'mentimun') {
-	// 		initMentimun
-	// 		classifyMentimun
-	// 	} else if (pilihModel.value === 'tomat') {
-	// 		initTomat
-	// 		classifyTomat
-	// 	}
 
-	btnUpload.addEventListener('click', () => {
-		btnDefault.click();
-	});	
-
-	btnDefault.addEventListener('change', function () {
-		// if(pilihModel.value === 'jagung') {
-		// 	initJagung
-		// 	classifyJagung
-		// } else if(pilihModel.value === 'padi') {
-		// 	initPadi
-		// 	classifyPadi
-		// } else if(pilihModel.value === 'mentimun') {
-		// 	initMentimun
-		// 	classifyMentimun
-		// } else if (pilihModel.value === 'tomat') {
-		// 	initTomat
-		// 	classifyTomat
-		// }
-		console.log(modelDipilih);
+	btnUpload.addEventListener('change', function () {
 		const file = this.files[0];
 		if (file) {
 			const reader = new FileReader();
@@ -75,14 +35,14 @@ const main = () => {
 				wrapper1.classList.add('actived');
 			};
 
-			console.log(btnDefault.value);
+			console.log(btnUpload.value);
 			btnCancel.addEventListener('click', () => {
 				window.location.reload();
 
 				imgClassify.src = '';
 				wrapper1.classList.remove('actived');
-				btnDefault.value = '';
-				console.log(btnDefault.value + 'sudah dihapus');
+				btnUpload.value = '';
+				console.log(btnUpload.value + 'sudah dihapus');
 
 				imgClassified.src = '';
 				wrapper2.classList.remove('actived');
@@ -108,7 +68,23 @@ const main = () => {
 			classifiedIcon.classList.add('d-none');
 			classifiedName.classList.add('d-none');
 
-			classify(imgClassified, btnPredict, spinnerGrow, classifiedIcon, classifiedName);
+			// console.log(pilihModel.value);
+			switch (pilihModel.value) {
+				case 'padi':
+					classifyPadi(imgClassify, btnPredict, spinnerGrow, classifiedIcon, classifiedName);
+					break;
+				case 'mentimun':
+					classifyMentimun(imgClassify, btnPredict, spinnerGrow, classifiedIcon, classifiedName);
+					break;
+				case 'tomat':
+					classifyTomat(imgClassify, btnPredict, spinnerGrow, classifiedIcon, classifiedName);
+					break;
+				case 'jagung':
+					classifyJagung(imgClassify, btnPredict, spinnerGrow, classifiedIcon, classifiedName);
+					break;
+				default:
+					break;
+			}
 		});
 	});
 };
