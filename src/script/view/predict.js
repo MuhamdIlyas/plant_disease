@@ -76,7 +76,7 @@ async function classifyJagung(
 
 	let diseasesTypes;
 	switch (results[0].className) {
-		case 'Jagung (Common rust)':
+		case 'Jagung (Bagus)':
 			diseasesTypes = 'Sehat';
 			break;
 
@@ -131,10 +131,7 @@ async function classifyMentimun(
 
 	let diseasesTypes;
 	switch (results[0].className) {
-		// case 'Jagung (Common rust)':
 		case 'Mentimun (Bagus)':
-		// case 'Padi (Hispa)':
-		// case 'Tomat (Leaf Mold)':
 			diseasesTypes = 'Sehat';
 			break;
 
@@ -189,10 +186,7 @@ async function classifyPadi(
 
 	let diseasesTypes;
 	switch (results[0].className) {
-		// case 'Jagung (Common rust)':
-		// case 'Mentimun (Bagus)':
-		case 'Padi (Hispa)':
-		// case 'Tomat (Leaf Mold)':
+		case 'Padi (Bagus)':
 			diseasesTypes = 'Sehat';
 			break;
 
@@ -247,10 +241,7 @@ async function classifyTomat(
 
 	let diseasesTypes;
 	switch (results[0].className) {
-		// case 'Jagung (Common rust)':
-		// case 'Mentimun (Bagus)':
-		// case 'Padi (Hispa)':
-		case 'Tomat (Leaf Mold)':
+		case 'Tomat (Bagus)':
 			diseasesTypes = 'Sehat';
 			break;
 
