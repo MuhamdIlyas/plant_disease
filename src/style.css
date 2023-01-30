@@ -17,6 +17,8 @@
     transition: ease-out;
     transition-duration: 0.15s;
     text-decoration: underline;
+    padding: 10px;
+    box-shadow: 1px 1px 1px 1px #03a05e;
 }
 
 .jumbotron {
