@@ -1,6 +1,7 @@
 import './choose-img';
 import './choose-model';
 import './classify-img';
+import './classify-advice';
 
 class ClassifySection extends HTMLElement {
     connectedCallback() {
@@ -22,11 +23,14 @@ class ClassifySection extends HTMLElement {
         chooseImgElement.classList.add('col-lg-6', 'col-md-6', 'col-12', 'mb-5');
         this.appendChild(chooseImgElement);
 
+        const classifySectionElement = document.createElement('classify-result');
         const classifyImgElement = document.createElement('classify-img');
-        classifyImgElement.classList.add('col-lg-6', 'col-md-6', 'col-12', 'mb-5');
-        classifyImgElement.setAttribute('id', 'hasil-klasifikasi');
-        this.appendChild(classifyImgElement);
-
+        const classifyAdviceElement = document.createElement('classify-advice');
+        classifySectionElement.classList.add('col-lg-6', 'col-md-6', 'col-12', 'mb-5');
+        classifySectionElement.setAttribute('id', 'hasil-klasifikasi');
+        classifySectionElement.appendChild(classifyImgElement);
+        classifySectionElement.appendChild(classifyAdviceElement);
+        this.appendChild(classifySectionElement);
     }
 }
 

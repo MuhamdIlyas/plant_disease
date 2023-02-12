@@ -5,7 +5,7 @@ class ClassifyImg extends HTMLElement {
 
     render() {
         this.innerHTML = `
-        <button id="btn-predict" class="btn border-0 h-100 w-100 p-0 m-0">
+        <button id="btn-predict" class="btn border-0 w-100 p-0 m-0" style="height:100%">
             <div
                 class="wrapper-2 rounded-3 position-relative d-flex py-5 w-100 h-100 align-items-center justify-content-center">
                 <div

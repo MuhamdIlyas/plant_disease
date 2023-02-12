@@ -32,6 +32,19 @@ const IMAGE_CLASSES_TOMAT = {
 	9: 'Tomat (Yellow Leaf Curl Virus)'
 };
 
+function DOMManipulation(classNameResult, diseasesTypes, adviceURL){
+	const hasilKlasifikasi = document.getElementsByTagName('classify-result')[0];
+	const tombolKlasifikasi = document.getElementById('btn-predict');
+	const penyakit = document.getElementById('penyakit');
+	const saran = document.getElementById('btn-advice');
+
+	hasilKlasifikasi.style.height = '100%';
+	tombolKlasifikasi.style.height = '300px';
+	penyakit.innerText = `[${classNameResult}][${diseasesTypes}]`;
+	saran.href = adviceURL;
+	saran.style.display = 'block';
+}
+
 async function classifyJagung(
 	imgClassified,
 	btnPredict,
@@ -75,17 +88,30 @@ async function classifyJagung(
 	console.log(JSON.stringify(results));
 
 	let diseasesTypes;
-	switch (results[0].className) {
+	let adviceURL;
+	const classNameResult = results[0].className;
+	switch (classNameResult) {
 		case 'Jagung (Bagus)':
 			diseasesTypes = 'Sehat';
+			adviceURL = '#';
 			break;
 
 		default:
 			diseasesTypes = 'Sakit';
+			if(classNameResult === 'Jagung (Cercospora leaf spot Gray leaf spot)') {
+				adviceURL = 'http://www.litbang.pertanian.go.id/search?q=penyakit+jagung%27#gsc.tab=0&gsc.q=penyakit%20jagung%20Gray%20leaf%20spot&gsc.sort=';
+			} else if(classNameResult === 'Jagung (Common rust)') {
+				adviceURL = 'http://www.litbang.pertanian.go.id/search?q=penyakit+jagung%27#gsc.tab=0&gsc.q=penyakit%20jagung%20Common%20rust&gsc.sort=';
+			} else if(classNameResult === 'Jagung (Northern Leaf Blight)') {
+				adviceURL = 'http://www.litbang.pertanian.go.id/search?q=penyakit+jagung%27#gsc.tab=0&gsc.q=penyakit%20jagung%20Northern%20Leaf%20Blight&gsc.sort=';
+			} else {
+				adviceURL = '#';
+			}
 			break;
 	}
-	const penyakit = document.getElementById('penyakit');
-	penyakit.innerText = `[${results[0].className}][${diseasesTypes}]`;
+
+	// DOM Manipulation untuk mengubah tampilan pada setelah klasifikasi seperti mengubah text, mengubah link, dan mengubah style
+	DOMManipulation(classNameResult, diseasesTypes, adviceURL);
 }
 
 async function classifyMentimun(
@@ -130,17 +156,21 @@ async function classifyMentimun(
 	console.log(JSON.stringify(results));
 
 	let diseasesTypes;
-	switch (results[0].className) {
+	let adviceURL;
+	const classNameResult = results[0].className;
+	switch (classNameResult) {
 		case 'Mentimun (Bagus)':
 			diseasesTypes = 'Sehat';
 			break;
 
 		default:
 			diseasesTypes = 'Sakit';
+			adviceURL = 'https://www.litbang.pertanian.go.id/search?q=penanganan+penyakit+mentimun+#gsc.tab=0&gsc.q=penanganan%20penyakit%20mentimun%20&gsc.page=1';
 			break;
 	}
-	const penyakit = document.getElementById('penyakit');
-	penyakit.innerText = `[${results[0].className}][${diseasesTypes}]`;
+
+	// DOM Manipulation untuk mengubah tampilan pada setelah klasifikasi seperti mengubah text, mengubah link, dan mengubah style
+	DOMManipulation(classNameResult, diseasesTypes, adviceURL);
 }
 
 async function classifyPadi(
@@ -185,17 +215,28 @@ async function classifyPadi(
 	console.log(JSON.stringify(results));
 
 	let diseasesTypes;
-	switch (results[0].className) {
+	let adviceURL;
+	const classNameResult = results[0].className;
+	switch (classNameResult) {
 		case 'Padi (Bagus)':
 			diseasesTypes = 'Sehat';
 			break;
 
 		default:
 			diseasesTypes = 'Sakit';
+
+			if(classNameResult === 'Padi (BrownSpot)') {
+				adviceURL = 'https://www.litbang.pertanian.go.id/search?q=penganan+penyakit+pada+brown+spot#gsc.tab=0&gsc.q=penganan%20penyakit%20padi%20brown%20spot&gsc.sort=';
+			} else if(classNameResult === 'Padi (Hispa)') {
+				adviceURL = 'https://www.litbang.pertanian.go.id/search?q=penyakit+padi+hispa#gsc.tab=0&gsc.q=penanganan%20penyakit%20padi%20hispa&gsc.sort=';
+			} else if(classNameResult === 'Padi (LeafBlast)') {
+				adviceURL = 'https://www.litbang.pertanian.go.id/search?q=penanganan+penyakit+padi+leaf+blast#gsc.tab=0&gsc.q=penanganan%20penyakit%20padi%20leaf%20blast&gsc.sort=';
+			}
 			break;
 	}
-	const penyakit = document.getElementById('penyakit');
-	penyakit.innerText = `[${results[0].className}][${diseasesTypes}]`;
+	
+	// DOM Manipulation untuk mengubah tampilan pada setelah klasifikasi seperti mengubah text, mengubah link, dan mengubah style
+	DOMManipulation(classNameResult, diseasesTypes, adviceURL);
 }
 
 async function classifyTomat(
@@ -240,17 +281,38 @@ async function classifyTomat(
 	console.log(JSON.stringify(results));
 
 	let diseasesTypes;
-	switch (results[0].className) {
+	let adviceURL;
+	const classNameResult = results[0].className;
+	switch (classNameResult) {
 		case 'Tomat (Bagus)':
 			diseasesTypes = 'Sehat';
 			break;
 
 		default:
 			diseasesTypes = 'Sakit';
+			if(classNameResult === 'Tomat (Bacterial spot)') {
+				adviceURL = 'https://www.litbang.pertanian.go.id/search?q=penanganan+tomat+bacterial+spot#gsc.tab=0&gsc.q=penanganan%20tomat%20bacterial%20spot&gsc.page=1';
+			} else if(classNameResult === 'Tomat (Early blight)') {
+				adviceURL = 'https://www.litbang.pertanian.go.id/search?q=penanganan+tomat+early+blight#gsc.tab=0&gsc.q=penanganan%20tomat%20early%20blight&gsc.page=1';
+			} else if(classNameResult === 'Tomat (Late blight))') {
+				adviceURL = 'https://www.litbang.pertanian.go.id/search?q=penanganan+tomat+late+blight#gsc.tab=0&gsc.q=penanganan%20tomat%20late%20blight&gsc.page=1';
+			} else if(classNameResult === 'Tomat (Leaf Mold)') {
+				adviceURL = 'https://www.litbang.pertanian.go.id/search?q=penanganan+tomat+leaf+mold#gsc.tab=0&gsc.q=penanganan%20tomat%20leaf%20mold&gsc.page=1';
+			} else if(classNameResult === 'Tomat (Septoria leaf spot)') {
+				adviceURL = 'https://www.litbang.pertanian.go.id/search?q=penanganan+tomat+septoria+leaf+spot#gsc.tab=0&gsc.q=penanganan%20tomat%20septoria%20leaf%20spot&gsc.page=1';
+			} else if(classNameResult === 'Tomat (Spider mites)') {
+				adviceURL = 'https://www.litbang.pertanian.go.id/search?q=penanganan+tomat+spider+mites#gsc.tab=0&gsc.q=penanganan%20tomat%20spider%20mites&gsc.page=1';
+			} else if(classNameResult === 'Tomat (Target Spot)') {
+				adviceURL = 'https://www.litbang.pertanian.go.id/search?q=penanganan+tomat+target+spot#gsc.tab=0&gsc.q=penanganan%20tomat%20target%20spot&gsc.page=1';
+			} else if(classNameResult === 'Tomat (Mosaic virus)') {
+				adviceURL = 'https://www.litbang.pertanian.go.id/search?q=penanganan+tomat+mosaic+virus#gsc.tab=0&gsc.q=penanganan%20tomat%20mosaic%20virus&gsc.page=1';
+			} else if(classNameResult === 'Tomat (Yellow Leaf Curl Virus)') {
+				adviceURL = 'https://www.litbang.pertanian.go.id/search?q=penanganan+tomat+yellow+leaf+curl+virus#gsc.tab=0&gsc.q=penanganan%20tomat%20yellow%20leaf%20curl%20virus&gsc.page=1';
+			}
 			break;
 	}
 	const penyakit = document.getElementById('penyakit');
-	penyakit.innerText = `[${results[0].className}][${diseasesTypes}]`;
+	penyakit.innerText = `[${classNameResult}][${diseasesTypes}]`;
 }
 
 export { classifyJagung, classifyMentimun, classifyPadi, classifyTomat };
